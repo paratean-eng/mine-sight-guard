@@ -160,7 +160,7 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
                       {sensor.value} {sensor.unit}
                     </div>
                     <p className="text-sm font-medium text-foreground">{sensor.name}</p>
-                    <p className="text-xs text-muted-foreground">{sensor.location}</p>
+                    <p className="text-xs text-muted-foreground mb-3">{sensor.location}</p>
                     
                     <LiveSensorChart sensor={sensor} />
                   </CardContent>

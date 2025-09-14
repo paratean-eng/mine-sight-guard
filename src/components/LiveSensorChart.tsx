@@ -52,7 +52,7 @@ export const LiveSensorChart: React.FC<LiveSensorChartProps> = ({ sensor, data }
   };
 
   return (
-    <div className="h-12 w-full mt-2">
+    <div className="h-8 w-full mt-2">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
           <YAxis hide domain={['dataMin - 5', 'dataMax + 5']} />
