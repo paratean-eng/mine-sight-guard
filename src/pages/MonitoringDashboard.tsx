@@ -146,10 +146,10 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
             </div>
 
             {/* Live Sensors */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
               {sensorData.map((sensor) => (
-                <Card key={sensor.id} className="glass-panel border-glass-border/50">
-                  <CardContent className="pt-6">
+                <Card key={sensor.id} className="glass-panel border-glass-border/50 flex flex-col h-56 min-h-[200px] sm:h-56 sm:min-h-[160px]">
+                  <CardContent className="pt-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <Badge className={getStatusColor(sensor.status)}>
                         {sensor.status.toUpperCase()}
@@ -160,9 +160,11 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
                       {sensor.value} {sensor.unit}
                     </div>
                     <p className="text-sm font-medium text-foreground">{sensor.name}</p>
-                    <p className="text-xs text-muted-foreground mb-3">{sensor.location}</p>
+                    <p className="text-xs text-muted-foreground">{sensor.location}</p>
                     
-                    <LiveSensorChart sensor={sensor} />
+                    <div className="mt-auto h-16">
+                      <LiveSensorChart sensor={sensor} />
+                    </div>
                   </CardContent>
                 </Card>
               ))}
