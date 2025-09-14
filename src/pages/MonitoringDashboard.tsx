@@ -22,6 +22,7 @@ import {
   Minus
 } from 'lucide-react';
 import { LiveSensorChart } from '@/components/LiveSensorChart';
+import { GraphicalDataPanel } from '@/components/GraphicalDataPanel';
 
 interface MonitoringDashboardProps {
   user: User;
@@ -32,7 +33,8 @@ const monitoringModes: MonitoringMode[] = [
   { id: 'live', name: 'Live Monitoring', description: 'Real-time feeds and sensors', icon: 'Eye' },
   { id: 'predictions', name: 'AI Predictions', description: 'ML risk predictions', icon: 'Brain' },
   { id: 'historical', name: 'Historical Analysis', description: 'Past data and trends', icon: 'History' },
-  { id: 'manual', name: 'Manual Controls', description: 'Override and actions', icon: 'SettingsIcon' }
+  { id: 'manual', name: 'Manual Controls', description: 'Override and actions', icon: 'SettingsIcon' },
+  { id: 'graphical', name: 'Graphical Data', description: 'Interactive charts and analytics', icon: 'BarChart3' }
 ];
 
 const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
@@ -61,7 +63,8 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
       '1': 'live',
       '2': 'predictions',
       '3': 'historical',
-      '4': 'manual'
+      '4': 'manual',
+      '5': 'graphical'
     };
     
     if (keyToMode[e.key]) {
@@ -374,6 +377,9 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
           </div>
         );
 
+      case 'graphical':
+        return <GraphicalDataPanel sensorData={sensorData} />;
+
       default:
         return null;
     }
@@ -434,7 +440,7 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
             ))}
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            Use keyboard shortcuts 1-4 to switch modes quickly
+            Use keyboard shortcuts 1-5 to switch modes quickly
           </p>
         </div>
       </div>

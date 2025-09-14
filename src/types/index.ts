@@ -39,7 +39,7 @@ export interface AINotification {
 }
 
 export interface MonitoringMode {
-  id: 'live' | 'predictions' | 'historical' | 'manual';
+  id: 'live' | 'predictions' | 'historical' | 'manual' | 'graphical';
   name: string;
   description: string;
   icon: string;
