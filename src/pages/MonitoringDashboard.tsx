@@ -162,17 +162,7 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
                     <p className="text-sm font-medium text-foreground">{sensor.name}</p>
                     <p className="text-xs text-muted-foreground">{sensor.location}</p>
                     
-                    {/* Live Chart */}
                     <LiveSensorChart sensor={sensor} />
-                    
-                    {isLiveUpdating && (
-                      <div className="flex items-center justify-center mt-2">
-                        <div className="flex items-center space-x-1 text-xs text-primary">
-                          <Activity className="w-3 h-3 animate-pulse" />
-                          <span>Live</span>
-                        </div>
-                      </div>
-                    )}
                   </CardContent>
                 </Card>
               ))}

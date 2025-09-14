@@ -52,33 +52,19 @@ export const LiveSensorChart: React.FC<LiveSensorChartProps> = ({ sensor, data }
   };
 
   return (
-    <div className="h-16 w-full mt-3">
-      <ChartContainer config={chartConfig} className="h-full w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData} margin={{ top: 2, right: 2, left: 2, bottom: 2 }}>
-            <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke={chartConfig.value.color}
-              strokeWidth={2}
-              dot={false}
-              activeDot={{ r: 3, fill: chartConfig.value.color }}
-            />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  labelFormatter={(value) => `Time: ${value}`}
-                  formatter={(value: any) => [
-                    `${Number(value).toFixed(1)} ${sensor.unit}`,
-                    sensor.name
-                  ]}
-                />
-              }
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </ChartContainer>
+    <div className="h-12 w-full mt-2">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+          <YAxis hide domain={['dataMin - 5', 'dataMax + 5']} />
+          <Line
+            type="monotone"
+            dataKey="value"
+            stroke={chartConfig.value.color}
+            strokeWidth={1.5}
+            dot={false}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };
