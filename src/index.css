@@ -133,6 +133,13 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  /* Transition utilities */
+  .transition-mining {
+    transition: var(--transition-mining);
+  }
 
   /* Glass morphism containers */
   .glass-panel {
@@ -166,17 +173,6 @@
     animation: pulse-mining 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  @keyframes pulse-mining {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.02);
-    }
-  }
-
   /* Mode switch animations */
   .mode-transition {
     transition: var(--transition-mining);
@@ -187,5 +183,18 @@
     background-image: 
       radial-gradient(circle at 25% 25%, hsl(var(--primary-glow)) / 0.1 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, hsl(var(--secondary)) / 0.1 0%, transparent 50%);
+  }
+}
+
+@layer base {
+  @keyframes pulse-mining {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
   }
 }
