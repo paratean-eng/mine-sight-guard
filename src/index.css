@@ -2,41 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Mine Monitoring AI Design System - Industrial Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Industrial Colors */
+    --background: 220 20% 8%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card System */
+    --card: 220 15% 12%;
+    --card-foreground: 210 20% 95%;
+    
+    /* Glass Morphism */
+    --glass: 220 15% 15%;
+    --glass-border: 220 20% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Mining Industrial Primary */
+    --primary: 25 95% 55%;
+    --primary-foreground: 220 20% 8%;
+    --primary-glow: 25 85% 65%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Mining Blue Secondary */
+    --secondary: 210 60% 45%;
+    --secondary-foreground: 210 20% 95%;
+    --secondary-dark: 210 70% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Alert System */
+    --alert-high: 0 85% 60%;
+    --alert-medium: 45 95% 55%;
+    --alert-safe: 120 50% 50%;
+    --alert-high-bg: 0 85% 60% / 0.1;
+    --alert-medium-bg: 45 95% 55% / 0.1;
+    --alert-safe-bg: 120 50% 50% / 0.1;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Interface Elements */
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 65%;
+    
+    --accent: 200 95% 65%;
+    --accent-foreground: 220 20% 8%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 20% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 25 95% 55%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Industrial Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-dark)));
+    --gradient-mining: linear-gradient(135deg, hsl(25 95% 55%), hsl(210 60% 45%));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass)) / 0.8, hsl(var(--glass)) / 0.4);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 8%) / 0.9, hsl(220 20% 8%) / 0.7);
 
-    --radius: 0.5rem;
+    /* Shadows & Effects */
+    --shadow-mining: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-glass: 0 8px 32px hsl(220 20% 5% / 0.6);
+    
+    /* Animation Timings */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-mining: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,6 +124,7 @@ All colors MUST be HSL.
   }
 }
 
+/* Mining-specific utility classes */
 @layer base {
   * {
     @apply border-border;
@@ -101,5 +132,60 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Glass morphism containers */
+  .glass-panel {
+    @apply bg-gradient-to-br from-glass/80 to-glass/40 backdrop-blur-md border border-glass-border/30 rounded-xl shadow-glass;
+  }
+
+  /* Alert status indicators */
+  .alert-high {
+    @apply bg-alert-high text-white;
+  }
+  
+  .alert-medium {
+    @apply bg-alert-medium text-background;
+  }
+  
+  .alert-safe {
+    @apply bg-alert-safe text-white;
+  }
+
+  /* Mining themed buttons */
+  .btn-mining {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-mining hover:shadow-mining;
+  }
+
+  .btn-secondary-mining {
+    @apply bg-gradient-to-r from-secondary to-secondary-dark text-secondary-foreground px-6 py-3 rounded-lg font-semibold transition-mining hover:shadow-lg;
+  }
+
+  /* Live data animation */
+  .pulse-mining {
+    animation: pulse-mining 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-mining {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+
+  /* Mode switch animations */
+  .mode-transition {
+    transition: var(--transition-mining);
+  }
+
+  /* Hero background pattern */
+  .hero-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary-glow)) / 0.1 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary)) / 0.1 0%, transparent 50%);
   }
 }

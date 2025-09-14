@@ -22,11 +22,23 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          dark: "hsl(var(--secondary-dark))",
         },
+        /* Alert System Colors */
+        "alert-high": "hsl(var(--alert-high))",
+        "alert-medium": "hsl(var(--alert-medium))",
+        "alert-safe": "hsl(var(--alert-safe))",
+        "alert-high-bg": "hsl(var(--alert-high-bg))",
+        "alert-medium-bg": "hsl(var(--alert-medium-bg))",
+        "alert-safe-bg": "hsl(var(--alert-safe-bg))",
+        /* Glass Morphism */
+        glass: "hsl(var(--glass))",
+        "glass-border": "hsl(var(--glass-border))",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
