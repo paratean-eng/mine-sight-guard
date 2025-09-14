@@ -18,8 +18,10 @@ import {
   Maximize,
   TrendingUp,
   TrendingDown,
+  Activity,
   Minus
 } from 'lucide-react';
+import { LiveSensorChart } from '@/components/LiveSensorChart';
 
 interface MonitoringDashboardProps {
   user: User;
@@ -159,9 +161,16 @@ const MonitoringDashboard = ({ user, onLogout }: MonitoringDashboardProps) => {
                     </div>
                     <p className="text-sm font-medium text-foreground">{sensor.name}</p>
                     <p className="text-xs text-muted-foreground">{sensor.location}</p>
+                    
+                    {/* Live Chart */}
+                    <LiveSensorChart sensor={sensor} />
+                    
                     {isLiveUpdating && (
-                      <div className="w-full h-1 bg-glass/30 rounded-full mt-2 overflow-hidden">
-                        <div className="h-full bg-primary animate-pulse" style={{ width: `${Math.random() * 100}%` }} />
+                      <div className="flex items-center justify-center mt-2">
+                        <div className="flex items-center space-x-1 text-xs text-primary">
+                          <Activity className="w-3 h-3 animate-pulse" />
+                          <span>Live</span>
+                        </div>
                       </div>
                     )}
                   </CardContent>
